@@ -1,0 +1,223 @@
+/* Бургер меню */
+.burger {
+  display: none;
+}
+
+.burger__animated {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-bottom-left-radius: 100%;
+  animation: not-checked-animated 0.3s both;
+  transition: all 0.3s;
+}
+
+.burger__content {
+  display: none;
+}
+
+.burger__header {
+  height: 60px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  padding: 10px 5%;
+  box-sizing: border-box;
+  margin: 0 0 10px;
+}
+
+.burger__title {
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  color: #191970;
+  padding: 10px 5%;
+}
+
+.burger__lists {
+  display: flex;
+  gap: 40px;
+  padding: 0 10%;
+}
+
+.burger__list li a,
+.burger__list li span,
+.burger__list li ul li a {
+  font-style: normal;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  line-height: 200%;
+  color: #191970;
+  transition: all 0.3s;
+}
+
+.burger__list li a:hover,
+.burger__list li span:hover {
+  color: #a7b0c2;
+  transition: all 0.3s;
+}
+
+.burger__list li ul {
+  display: none;
+}
+
+.burger__list li ul li {
+  transition: all 0.3s;
+}
+
+.burger__list li ul li a {
+  color: #1752aa;
+}
+
+.burger__list li .burger__list_active {
+  display: initial;
+}
+
+.burger__list li:hover ul li {
+  padding: 0 0 0 40px;
+  transition: all 0.3s;
+}
+
+.burger__list li .burger__select::after {
+  content: "\f078";
+  display: inline-block;
+  font-family: "FontAwesome";
+  margin: 0 0 0 10px;
+}
+
+.burger__list li .burger__select_active:after {
+  content: "\f077";
+}
+
+/* Когда инпут checked*/
+#menu-toggle:checked + #trigger + #burger + .burger__animated {
+  animation: checked-animated 1s ease both;
+}
+
+#menu-toggle:checked + #trigger ~ .burger__animated .burger__content {
+  display: block;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  display: none;
+}
+/* Когда инпут checked*/
+
+/* Анимация линий бургер меню */
+#trigger,
+#burger,
+#burger:before,
+#burger:after {
+  width: 30px;
+  height: 5px;
+  position: absolute;
+  z-index: 11;
+  top: 20px;
+  right: 20px;
+  background: #191970;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#trigger {
+  height: 40px;
+  background: none;
+}
+
+#burger:before {
+  content: "";
+  top: 10px;
+  left: 0;
+}
+
+#burger:after {
+  content: "";
+  top: 20px;
+  left: 0;
+}
+
+#menu-toggle:checked + #trigger + #burger {
+  top: 35px;
+  transform: rotate(180deg);
+  transition: all transform 0.3s ease;
+}
+
+#menu-toggle:checked + #trigger + #burger:before {
+  width: 20px;
+  top: -2px;
+  left: 18px;
+  transform: rotate(45deg) translateX(-5px);
+  transition: all transform 0.3s ease;
+}
+
+#menu-toggle:checked + #trigger + #burger:after {
+  width: 20px;
+  top: 2px;
+  left: 18px;
+  transform: rotate(-45deg) translateX(-5px);
+  transition: all transform 0.3s ease;
+}
+/* Анимация линий бургер меню */
+
+/* Анимация бургер меню */
+@keyframes checked-animated {
+  50% {
+    width: 1000px;
+    height: 1000px;
+  }
+  100% {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+@keyframes not-checked-animated {
+  0% {
+    width: 1000px;
+    height: 1000px;
+  }
+}
+/* Анимация бургер меню */
+/* Бургер меню */
+
+@media screen and (max-width: 768px) {
+  /* Бургер меню */
+  .burger {
+    display: block;
+  }
+  /* Бургер меню */
+}
+
+@media screen and (max-width: 425px) {
+  /* Бургер меню */
+  .burger__animated {
+    width: 60px;
+    height: 60px;
+  }
+
+  #trigger,
+  #burger,
+  #burger:before,
+  #burger:after {
+    height: 4px;
+    top: 15px;
+    right: 10px;
+  }
+
+  #trigger {
+    height: 30px;
+  }
+
+  #burger:before {
+    top: 9px;
+  }
+
+  #burger:after {
+    top: 17.8px;
+  }
+  /* Бургер меню */
+}
